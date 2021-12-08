@@ -13,9 +13,15 @@ def timer_proc():
     goal_time = dt.datetime.now() + dt.timedelta(seconds=secs, minutes=mins, hours=hrs)
 
     while dt.datetime.now() < goal_time:
-        time_on_timer = f'{(goal_time - dt.datetime.now()).minutes}'
-        current_timer.change_time_left(time_on_timer)
-        time.sleep(0.1)
+        time_left = goal_time - dt.datetime.now()
+        print(time_left)
+        hrs_left, mins_secs = divmod(time_left.seconds, 3600)
+        mins_left, secs_left = divmod(mins_secs, 60)
+
+        time_left = dt.time(hrs_left, mins_left, secs_left)
+
+        current_timer.change_time_left(time_left)
+        time.sleep(1)
     else:
         current_timer.f_timer.destroy()
         mb.showinfo(f"Таймер {current_timer.current_timer_number}", timer.txt.get())
