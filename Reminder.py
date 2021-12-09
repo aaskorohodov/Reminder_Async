@@ -4,6 +4,8 @@ import threading
 import datetime as dt
 import tkinter.messagebox as mb
 
+'''Демонстрация работы потоков с TkInter. Практической пользы мало, требует допила, но работает.'''
+
 
 def timer_proc():
     '''Запускается в каждом потоке, обрабатывает обратный отсчет, затем обращается к классам.'''
